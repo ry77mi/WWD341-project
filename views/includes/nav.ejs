@@ -1,0 +1,42 @@
+<div class="backdrop"></div>
+<header class="main-header">
+    <button id="side-menu-toggle">☰</button>
+    <nav class="main__nav main_width">
+        <ul class="main__nav_list">
+            <li class="main__nav_item"><a href="/" class="<%= path === '/' ? 'active' : '' %>">Pictournal</a></li>
+            <% if (isAuthenticated) { %>
+                <li class="main__nav_item"><a href="/profile/<%= user._id %>" class="<%= path === '/profile' ? 'active' : '' %>">Profile</a></li>
+                <li class="main__nav_item"><a href="/newPost" class="<%= path === '/newPost' ? 'active' : '' %>">Add Pictournal</a></li>
+                <% } %>
+        </ul>
+        <ul class="main__nav_list">
+            <% if (!isAuthenticated) { %>
+                <li class="main__nav_item"><a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a></li>
+                <li class="main__nav_item"><a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a></li>
+                <% } else { %>
+                    <li class="main__nav_item">
+                        <a class="<%= path === '/logout' ? 'active' : '' %>" href="/logout">Logout</a></li>
+                    <li>
+                        <label class="switch">
+                                <input type="checkbox" id="toggle">
+                                <span class="slider round"></span>
+                            </label>
+                    </li>
+                    <!-- <form action="/logout" method="post">
+                        <button class="btn" type="submit">Logout</button>
+                    </form>
+                </li> -->
+                    <% } %>
+        </ul>
+    </nav>
+</header>
+
+<nav class="mobile-nav">
+    <ul class="mobile-nav__item-list">
+        <li class="mobile-nav__item"><a href="" class="active">Pictournal</a></li>
+        <li class="mobile-nav__item"><a href="">Profile</a></li>
+        <li class="mobile-nav__item"><a href="">Add Pictournal</a></li>
+        <li class="mobile-nav__item"><a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a></li>
+        <li class="mobile-nav__item"><a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a></li>
+    </ul>
+</nav>

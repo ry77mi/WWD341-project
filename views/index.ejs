@@ -1,0 +1,41 @@
+<%- include('./includes/head.ejs') %>
+    <%- include('./includes/nav.ejs') %>
+        <main class="main_width">
+            <div class="message_main">
+                <h1 class="main__title">Welcome to Pictournal</h1>
+                <div class="line"></div>
+                <p>What is Pictournal? It is a picture sharing and journal entry social media website to keep track of all the important memories in your life. You are in charge of everything you share, you can either choose to share with friends, or keep
+                    things private for special memories.
+                </p>
+            </div>
+            <div>
+                <ul class="gallery">
+                    <%  posts = posts.sort(() => Math.random() - 0.5)
+                        for (post of posts){ %>
+
+
+                        <li class="main_page__post" style="width:33%; height:auto; position: relative;">
+                            <a href="../../postDetails/<%= post._id %>">
+                                <img class="main_page__img" src="/<%= post.image %>" onerror="noImage(this)" >
+                                </a>
+                            <article class="main_page__user_hover">
+                                <a href="/profile/<%= post.userId._id %>">
+                                    <h2>
+                                        <%= post.userId.name %>
+                                    </h2>
+                                    <img class="main_page__user" src="<%= post.userId.profileImgUrl %>" onerror="noImage(this)">
+                                </a>
+                            </article>
+                        </li>
+                        <% } %>
+
+                            <!-- <% var max = 50;
+                        for (var i = 0; i < max; i++){ 
+                        var w = Math.floor(Math.random() * (5 - 2) + 2)*100;
+                        var h = Math.floor(Math.random() * (5 - 2) + 2)*100;%>
+                        <li><a href="#<%= i %>"><img src="https://source.unsplash.com/random/<%= w %>x<%= h %>?sig=<%= i %>" loading="lazy"></a></li>
+                        <% } %> -->
+                </ul>
+            </div>
+        </main>
+        <%- include('./includes/end.ejs') %>

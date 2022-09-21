@@ -1,0 +1,91 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <div class="main_width">
+                <form class="form-new-post" action="/edit" method="POST" enctype="multipart/form-data">
+                    <img style="width: 100%; height: auto;" src="/<%= post.image %>" onerror="noImage(this)">
+                    <div class="user_name">
+                        <%=user.name%>
+                    </div>
+                    <label for="image">Please Select Your Picture</label>
+                    <input type="file" name="image">
+                    <label for="tags">Tags</label>
+                    <input type="text" name="tags" value="<%=tags%>">
+                    <label for="post_desc">Description</label>
+                    <textarea name="post_desc" id="post_desc"><%=post.description%></textarea>
+                    <label for="privacy">Viewable to:</label>
+                    <div class="radio-privacy">
+                        <%if(privacy == 'public'){%>
+                            <input type="radio" name="privacy" value="public" id="public" checked>
+                            <% }else{ %>
+                                <input type="radio" name="privacy" value="public" id="public">
+                                <% } %>
+                                    <label for="public">Public</label><br>
+                                    <%if(privacy == 'followers'){%>
+                                        <input type="radio" name="privacy" value="followers" id="followers" checked>
+                                        <% }else{ %>
+                                            <input type="radio" name="privacy" value="followers" id="followers">
+                                            <% } %>
+                                                <label for="followers">Followers</label><br>
+                                                <%if(privacy == 'private'){%>
+                                                    <input type="radio" name="privacy" value="private" id="private" checked>
+                                                    <% }else{ %>
+                                                        <input type="radio" name="privacy" value="private" id="private">
+                                                        <% } %>
+                                                            <label for="private">Private</label><br>
+                    </div>
+                    <input type="text" value="<%= post._id%>" name="postId" hidden>
+                    <button class="btn" type="submit">Submit</button>
+                </form>
+                <form class="form-new-post" action="/delete" method="POST" enctype="multipart/form-data">
+                    <input type="text" value="<%= post._id%>" name="postId" hidden>
+                    <button class="btn" type="submit">Delete Post</button>
+                    <p class="warning">This action is permanent and cannot be undone!</p>
+                </form>
+            </div>
+        </main>
+        <%- include('../includes/end.ejs') %>
+
+
+            <% /* %>
+                <%- include('../includes/head.ejs') %>
+                    <%- include('../includes/nav.ejs') %>
+                        <main>
+                            <div class="main_width">
+                                <form class="form-new-post" action="/newPost" method="POST" enctype="multipart/form-data">
+                                    <div class="user_name">
+                                        <%=user.name%>
+                                    </div>
+                                    <label for="image">Please Select Your Picture</label>
+                                    <input type="file" name="image">
+                                    <label for="tags">Tags</label>
+                                    <input type="text" name="tags" value="<%=tags%>">
+                                    <label for="post_desc">Description</label>
+                                    <textarea name="post_desc" id="post_desc"><%=post.description%></textarea>
+                                    <label for="privacy">Viewable to:</label>
+                                    <div class="radio-privacy">
+                                        <%if(post.privacy == 'public')%>
+                                            <input type="radio" name="privacy" value="public" id="public" checked>
+                                            <% }else{ %>
+                                                <input type="radio" name="privacy" value="public" id="public">
+                                                <% } %>
+                                                    <label for="public">Public</label><br>
+                                                    <%if(post.privacy == 'followers')%>
+                                                        <input type="radio" name="privacy" value="followers" id="followers" checked>
+                                                        <% }else{ %>
+                                                            <input type="radio" name="privacy" value="followers" id="followers">
+                                                            <% } %>
+                                                                <label for="followers">Followers</label><br>
+                                                                <%if(post.privacy == 'private')%>
+                                                                    <input type="radio" name="privacy" value="private" id="private" checked>
+                                                                    <% }else{ %>
+                                                                        <input type="radio" name="privacy" value="private" id="private">
+                                                                        <% } %>
+                                                                            <label for="private">Private</label><br>
+                                    </div>
+                                    <button class="btn" type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </main>
+                        <%- include('../includes/end.ejs') %>
+                            <% */ %>

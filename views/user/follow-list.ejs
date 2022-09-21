@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <div class="main_width">
+                <% if(following.length > 0) { %>
+                    <% following.forEach(u => { %>
+                        <article class="follow_user">
+                            <a class="profile_img" href="/profile/<%= u.userId._id %>">
+                                    <img class="profile_img" src="/<%= u.userId.profileImgUrl%>" onerror="noImage(this)">
+                                </a>
+                            <div class="user_name">
+                                <a href="/profile/<%= u.userId._id %>">
+                                    <%= u.userId.name %>
+                                </a>
+                            </div>
+                            <p class="user_bio">
+                                <%= u.userId.bio %>
+                            </p>
+                            <span><a href="/following/<%= u.userId._id %>" class="link"><strong>Following: </strong>
+                                    <%= u.userId.following.users.length %>
+                                </a></span>
+                        </article>
+                        <% }) %>
+                            <% } else { %>
+                                <h1>
+                                    <a class="user_name" href="/profile/<%= profileUser._id %>">
+                                        <%= profileUser.name %>
+                                    </a>is not following anyone yet!</h1>
+                                <% } %>
+            </div>
+        </main>
+        <%- include('../includes/end.ejs') %>

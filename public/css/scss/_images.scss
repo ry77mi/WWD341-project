@@ -1,0 +1,186 @@
+ul {
+    list-style: none;
+}
+
+// BASIC
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+
+.gallery li {
+    // height: 100%;
+    flex-grow: 1;
+    border: 5pt solid #d3d3d3;
+    overflow: hidden;
+    text-align: center;
+}
+
+.gallery li:hover {
+    overflow: hidden;
+    opacity: 0.7;
+}
+
+.gallery li:last-child {
+    // There's no science in using "10" here. In all my testing, this delivered the best results.
+    flex-grow: 10;
+}
+
+.gallery img {
+    max-height: 500px;
+    // min-width: 100%;
+    object-fit: cover;
+    // vertical-align: bottom;
+    vertical-align: middle;
+    height: auto;
+    background-position: center;
+    // width: auto;
+}
+
+.main_page__img {
+    height: 500px !important;
+    width: 100% !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.profile_img {
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+}
+
+// ADVANCED
+// Portrait
+@media (max-aspect-ratio: 1/1) {
+    .gallery li {
+        height: 30vh;
+    }
+}
+
+// Short screens
+@media (max-height: 480px) {
+    .gallery li {
+        height: 80vh;
+    }
+}
+
+// Smaller screens in portrait
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+    .gallery ul {
+        flex-direction: row;
+    }
+    .gallery li {
+        height: auto;
+        width: 100%;
+    }
+    .gallery img {
+        width: 100%;
+        max-height: 75vh;
+        min-width: 0;
+    }
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    border-bottom: 1px solid black;
+    margin: 0;
+    margin-top: -10px;
+}
+
+.feed,
+.feed-w {
+    $color-shad: rgb(179, 179, 179);
+    $blur: 3px;
+    $dpos: 1px;
+    $dneg: -1px;
+    box-shadow: $dpos $dpos $blur $color-shad, $dneg $dneg $blur $color-shad, $dneg $dpos $blur $color-shad, $dpos $dneg $blur $color-shad;
+    margin: 20px;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    // max-width: 500px;
+    img {
+        width: 500px;
+        height: 100%;
+    }
+    &_lower {
+        // width: 500px;
+        // opacity: 0;
+        background-color: rgba(rgb(0, 0, 0), 0.8);
+        position: relative;
+        z-index: 10;
+        top: -55px;
+        height: 50px;
+        padding: 10px;
+        color: white;
+        width: 100%;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.feed_img {
+    max-width: 500px;
+}
+
+.feed_side {
+    background-color: rgba(rgb(0, 0, 0), 0.8);
+    position: relative;
+    float: right;
+    color: white;
+    z-index: 10;
+    // height: 500px;
+    padding: 10px;
+    width: 100%;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.feed-w {
+    max-width: 100%;
+    height: auto;
+}
+
+.icon_ {
+    position: absolute;
+    top: -30px;
+    &_left {
+        padding-left: 30;
+        float: left;
+    }
+    &_right {
+        padding-right: 30;
+        float: right;
+    }
+    &_text {
+        padding-left: 30;
+    }
+}
+
+.user__static {
+    position: fixed;
+    width: 500px;
+}
+
+.profile_header,
+.gallery,
+.message_main,
+.form-new-post,
+.login-form,
+.follow_user {
+    background: #d3d3d3;
+    padding: 2%;
+    border-radius: 20px;
+    border: none;
+}

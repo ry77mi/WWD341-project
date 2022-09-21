@@ -1,0 +1,62 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <div class="main_width">
+                <div class="post">
+                    <div class="post_upper">
+                        <a href="./../profile/<%= author._id %>"><img class="profile_img" src="/<%= author.profileImgUrl %>" onerror="noImage(this)"></a>
+                        <p>
+                            <%= author.name %>
+                        </p>
+                        <p>
+                            Description:
+                            <%= post.description %>
+                        </p>
+                    </div>
+                    <img style="width: 100%; height: auto;" src="/<%= post.image %>" onerror="noImage(this)">
+                    <div class=" feed_lower ">
+                        <div class="icon__left ">
+                            <% if(userLiked){ %>
+                                <i class="fa fa-heart fa-2x "></i>
+                                <% }else{ %>
+                                    <a href="../like/<%=post._id %>/postDetails"><i class="far fa-heart fa-2x"></i></a>
+                                    <% } %>
+                        </div>
+                        <span class="icon__text">&nbsp;
+                            Likes: <%= likes %>
+                        </span>
+                        <div class="icon__right">
+                            <% if(String(author._id) == String(user._id)){ %>
+                                <a href="../edit/<%= post._id %>"><i class="far fa-edit fa-2x"></i></a>
+                                <% } %>
+                        </div>
+                        <div class="icon__right">
+                            <% if(String(author._id) == String(user._id)){ %>
+                                <a href="../delete/<%= post._id %>"><i class="far fa-delete fa-2x"></i></a>
+                                <% } %>
+                        </div>
+                    </div>
+                    <div class="comment_container">
+                        <% for(comment of comments){ if(comment.description) { %>
+                            <div class="comment_card">
+                                <a href="./../profile/<%= comment.userId %>">
+                                    <%= comment.username %>
+                                </a>
+                                <div class="comment_description">
+                                    <%= comment.description %>
+                                </div>
+
+                            </div>
+                            <% } } %>
+                                <div class="comments">
+                                    <form class="comment_form" action="/postComment" method="POST">
+                                        <textarea name="description" cols="50" rows="5" placeholder="Type your comment..."></textarea>
+                                        <input type="text" value="<%= post._id %>" name="postId" hidden>
+                                        <button type="submit">Submit</button>
+                                    </form>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('../includes/end.ejs') %>

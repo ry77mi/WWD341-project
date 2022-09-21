@@ -1,0 +1,84 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <div class="main_width">
+                <div class="profile_header">
+                    <img class="profile_img" src="/<%= profileUser.profileImgUrl %>" onerror="noImage(this)">
+                    <div class="profile_text">
+                        <div class="user_name">
+                            <%= username %>
+                        </div>
+
+                        <% if(canEdit) { %>
+                            <span class="user_edit_box"><a class="btn user_edit" href="/edit-profile">Edit Profile</a>
+                        <a class="btn user_edit" href="/feed">My Feed</a></span>
+                            <% } else { %>
+                                <span class="user_edit_box">
+                                <% if(!isFollowing) { %>
+                                <form action="/follow" method="post">
+                                    <button class="btn" type="submit">Follow</button>
+                                    <input type="hidden" name="userId" value="<%= profileUser._id %>">
+                                </form>
+                                <% } else { %>
+                                    <form action="/unfollow" method="post">
+                                        <button class="btn" type="submit">Unfollow</button>
+                                        <input type="hidden" name="userId" value="<%= profileUser._id %>">
+                                    </form>
+                                    <% } %>
+                            </span>
+                                <% } %>
+                                    <p class="user_bio">
+                                        <%= profileUser.bio %>
+                                    </p>
+                                    <span><a href="/following/<%= profileUser._id %>" class="link"><strong>Following: </strong>
+                        <%= following %>
+                    </a></span>
+                    </div>
+                </div>
+                <ul class="gallery">
+                    <%if(!posts && canEdit) { %>
+                        <h1>Nothing to See! Add a Post?</h1>
+                        <% } else if(!posts) { %>
+                            <h1>Nothing to see here.</h1>
+                            <% } else { %>
+                                <% for (let i = posts.length - 1; i >= 0; i--){  
+                                    var link = "../../postDetails/" + posts[i]._id %>
+                                    <!-- <div class="left" onclick="window.location.href='<%= link %>'"> -->
+                                    <div class="feed" onclick="window.location.href='<%= link %>'">
+                                        <div class="feed_img">
+                                            <img src="/<%= posts[i].image %>" onerror="noImage(this)" loading="lazy">
+                                        </div>
+                                        <div class="feed_side">
+
+
+                                            <span class="icon__text">&nbsp;Likes: <%= likes[i] %></span>
+                                            <p>
+                                                <%= posts[i].description %>
+                                            </p>
+                                            <p>
+                                                <%= posts[i].time %>
+                                            </p>
+                                            <div class="icon__left">
+                                                <% if(liked[i]){ %>
+                                                    <i class="fa fa-heart fa-2x"></i>
+                                                    <% }else{ %>
+                                                        <a href="../like/<%= posts[i]._id %>/<%= profileUser._id %>"><i class="far fa-heart fa-2x"></i></a>
+                                                        <% } %>
+                                                            <a href="../comment/<%= posts[i]._id %>"><i class="far fa-comment fa-2x"></i></a>
+                                                            <div class="icon__right">
+                                                                <% if(canEdit){ %>
+                                                                    <a href="../edit/<%= posts[i]._id %>"><i class="far fa-edit fa-2x"></i></a>
+                                                                    <% } %>
+                                                            </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <% } %>
+                                        <!-- </div> -->
+                                        <% } %>
+                </ul>
+            </div>
+            <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
+        </main>
+        <%- include('../includes/end.ejs') %>

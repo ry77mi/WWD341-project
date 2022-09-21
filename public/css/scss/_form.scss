@@ -1,0 +1,62 @@
+form {
+    display: inline;
+}
+
+.form-edit,
+.form-new-post {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+}
+
+.form-edit label,
+.form-new-post label {
+    padding: 1em 0 .5em 0;
+}
+
+.form-edit input,
+.form-edit textarea,
+.form-new-post input,
+.form-new-post textarea {
+    padding: .5em;
+    font-family: 'Montserrat';
+}
+
+textarea {
+    resize: none;
+}
+
+.login-form {
+    max-width: 90%;
+    margin: auto;
+    display: block;
+}
+
+.form-control {
+    margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.25rem;
+}
+
+.form-control input,
+.form-control textarea {
+    border: 1px solid #a1a1a1;
+    font: inherit;
+    border-radius: 2px;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+    outline-color: $linear-gradient;
+}
+
+.form-control input.invalid,
+.form-control textarea.invalid {
+    border-color: red;
+}

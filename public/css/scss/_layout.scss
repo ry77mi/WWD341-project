@@ -1,0 +1,16 @@
+// Media query break points
+$S: 425px;
+$M: 768px;
+$L: 1293px;
+@mixin MQ($canvas) {
+    @if $canvas==S {
+        @media only screen and (min-width: $S) {
+            @content;
+        }
+    }
+    @else if $canvas==M {
+        @media only screen and (min-width: $M) {
+            @content;
+        }
+    }
+}

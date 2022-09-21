@@ -1,0 +1,19 @@
+.main_width {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.right {
+    float: right;
+    max-width: 500px;
+}
+
+.left {
+    float: left;
+    cursor: pointer;
+}

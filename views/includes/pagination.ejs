@@ -1,0 +1,13 @@
+<section class="pagination">
+    <!-- Not sure sure if we need it to always show the first page or not but it's here in case. Maybe looks better with just the Previous and Next buttons?-->
+    <!-- <% if (currentPage !== 1 && previousPage !== 1) { %>
+        <a href="?page=1">1</a>
+    <% } %> -->
+    <% if (hasPreviousPage) { %>
+        <a href="?page=<%= previousPage %>">Previous</a>
+    <% } %>
+    <!-- <a href="?page=<%= currentPage %>" class="active"><%= currentPage %></a> -->
+    <% if (hasNextPage) { %>
+        <a href="?page=<%= nextPage %>">Next</a>
+    <% } %>
+</section>

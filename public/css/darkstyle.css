@@ -1,0 +1,100 @@
+html,
+body {
+    background-color: black;
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: white;
+}
+
+.user_name,
+.user_name a {
+    color: white;
+}
+
+.gallery li {
+    border: 5pt solid rgb(25, 27, 29);
+}
+
+.main-header {
+    background: black;
+    border-bottom: 1px solid gray;
+}
+
+.main__nav_item a:hover {
+    color: white;
+    background: #118ab2;
+    mix-blend-mode: normal;
+}
+
+.active {
+    background: #118ab2;
+    color: white;
+    mix-blend-mode: normal;
+}
+
+.btn {
+    color: white;
+    background-color: black;
+    border: 1px solid #118ab2;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #118ab2;
+}
+
+.link {
+    color: white;
+}
+
+.feed img,
+.feed-w img {
+    box-shadow: 1px 1px 8px #000000, -1px -1px 8px #000000, -1px 1px 8px #000000, 1px -1px 8px #000000;
+}
+
+.profile_header,
+.gallery,
+.message_main,
+.form-new-post,
+.login-form,
+.follow_user {
+    background: rgb(25 27 29);
+    padding: 2%;
+    border-radius: 20px;
+    border: none;
+}
+
+input,
+textarea,
+.form-control input,
+.form-control textarea {
+    background-color: #313131;
+    border-radius: 3px;
+    border: none;
+    color: white;
+}
+
+.comment_form textarea {
+    background-color: rgb(54, 54, 54);
+    color: white;
+}
+
+.comment_form button {
+    background-color: rgb(36, 36, 36);
+    color: white;
+}
+
+.comment_card a {
+    color: yellow;
+}
+
+.feed,
+.feed img {
+    box-shadow: 1px 1px 3px rgb(27, 27, 27), -1px -1px 3px rgb(27, 27, 27), -1px 1px 3px rgb(27, 27, 27), 1px -1px 3px rgb(27, 27, 27);
+}

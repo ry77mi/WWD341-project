@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <div class="main_width">
+                <div class="post">
+                    <div class="post_upper">
+                        <p>
+                            Posted by:
+                            <%= author.name %>
+                        </p>
+                        <p>
+                            At:
+                            <%= post.time %>
+                        </p>
+                    </div>
+                    <img style="width: 100%; height: auto;" src="/<%= post.image %>" onerror="noImage(this)">
+                    <div class="feed_lower">
+                        <div class="icon__left">
+                            <% if(userLiked){ %>
+                                <i class="fa fa-heart fa-2x"></i>
+                                <% }else{ %>
+                                    <a href="../like/<%= post._id %>"><i class="far fa-heart fa-2x"></i></a>
+                                    <% } %>
+                                        <a href="../comment/<%= post._id %>"><i class="far fa-comment fa-2x"></i></a>
+                                        <i class="far fa-share-square fa-2x"></i>
+                        </div>
+                        <span class="icon__text">&nbsp;
+                            Likes: <%= likes %>
+                        </span>
+                        <div class="icon__right">
+                            <i class="far fa-bookmark fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="comments">
+                        <form class="comment_form" action="/postComment" method="POST">
+                            <textarea name="description" cols="50" rows="10" placeholder="Type your comment..."></textarea>
+                            <input type="text" value="<%= post._id %>" name="postId" hidden>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('../includes/end.ejs') %>

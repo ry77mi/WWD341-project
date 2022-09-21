@@ -1,0 +1,22 @@
+// POSTS/FEED - Steve
+Main page
+Personalized feed
+
+// AUTH - Ike
+Login Page
+Signup
+Reset password
+
+// POSTS - Ryan
+New Post
+Existing post
+Comments
+
+// USER - Rachel
+Profile
+Edit Profile
+Follow List
+
+STRETCH
+(Settings)
+(Notifications)
